@@ -282,11 +282,35 @@ const App = () => {
 }
 
 render(<App />)
-```
+-------------------------------------------------------
+SOLUTION: 
+
+const Counter = ({ count, setCount }) => {
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </>
+  )
+};
+
+const App = () => {
+  const [count, setCount] = React.useState(0);
+  return (
+    <>
+      <p>The current count is: {count} </p>
+
+      <Counter count={count} setCount={setCount} />
+    </>
+  )
+}
+
+render(<App />)
 
 ---
 
-```jsx live=true
+jsx live=true
 const FavouriteFood = () => {
   const [food, setFood] = React.useState('');
 
@@ -327,7 +351,51 @@ const App = () => {
 }
 
 render(<App />)
-```
+
+
+SOLUTION ------------------------------------------------------
+
+jsx live=true
+const FavouriteFood = ({ food, setFood }) => {
+
+  return (
+    <>
+      <label>
+        <input
+          type="radio"
+          name="food"
+          value="pizza"
+          onChange={() => setFood('pizza')}
+        />
+        Pizza
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="food"
+          value="broccoli"
+          onChange={() => setFood('broccoli')}
+        />
+        Broccoli
+      </label>
+    </>
+  )
+};
+
+const App = () => {
+  const [food, setFood] = React.useState('');
+  return (
+    <>
+      <p> My favourite food is: {food} </p>
+      <FavouriteFood food={food} setFood={setFood}/>
+    </>
+  )
+}
+
+render(<App />)
+
+-----------------------------------------------------------------------------
+
 
 ---
 
@@ -335,7 +403,7 @@ render(<App />)
 
 ---
 
-```jsx live=true inline=true
+jsx live=true inline=true
 () => {
   const [showAnswer, setShowAnswer] = React.useState(false);
 
@@ -343,10 +411,11 @@ render(<App />)
     <>
       <h3>What do you call someone with no body and no nose?</h3>
 
+//the new stuff: this is a shorthand condition 
       {showAnswer && (
         <p>Nobody knows!</p>
       )} 
-      
+// 
       <button onClick={() => setShowAnswer(true)}>
         Show punchline
       </button>
