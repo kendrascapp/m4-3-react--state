@@ -12,8 +12,8 @@ There have been a few iterations. Until quite recently, the main way to create c
 
 ```jsx live=true
 class Counter extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       count: 0,
@@ -58,9 +58,13 @@ It's important to be aware of classes, since many online resources will use them
 
 # Cheatsheet
 
-```jsx
+THIS IS THE NEW WAY:
+import React, { useState } from 'react';
+
 const [count, setCount] = React.useState(0);
 
+--------
+------- stuff below is old 
 // Initialization
 React.useState(0) === this.state = { count: 0 }
 
